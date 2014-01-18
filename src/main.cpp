@@ -902,11 +902,11 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
         return nProofOfWorkLimit;
 		
     // GLC difficulty adjustment protocol switch
-    int64 nDiffSwitchBlock = 179842;
+    int64 nDiffSwitchBlock = 179844;
     int nHeight = pindexLast->nHeight + 1;
     bool fNewDifficultyProtocol = (nHeight >= nDiffSwitchBlock || fTestNet);
     
-    //Starting at block 179842 retarget every block with exponential moving toward target spacing
+    //Starting at block 179844 retarget every block with exponential moving toward target spacing
     if (fNewDifficultyProtocol)
     {
         if (pindexLast->pprev == NULL)
