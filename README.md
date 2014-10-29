@@ -4,7 +4,7 @@
 
 <a href="http://www.GLC.IO" target="_blank">Official website</a>
 
-Development Donations: 7HGqgroz38eY4xMfwUFb7BLVwUjUagykDm
+Development Donations: 78M7qK1j4ryhz9L5Vj47mehgk4gF8bDRA1
 
 0% Pre-mine - Fair Launch: Wednesday 26 Jun 2013 16:12:27 GMT
 
@@ -45,8 +45,11 @@ daemon=1<br>
 server=1<br>
 gen=0<br>
 maxconnections=100<br>
-addnode=162.243.239.107<br>
-addnode=162.243.106.159<br>
-addnode=162.243.104.134<br>
-addnode=162.243.231.130<br>
-addnode=162.243.210.204<br>
+addnode=94.23.241.56<br>
+addnode=46.105.118.226<br>
+addnode=2.31.18.44<br>
+addnode=144.76.64.123<br>
+addnode=162.243.208.154<br>
+addnode=100.42.224.37<br>
+addnode=72.78.100.13<br>
+addnode=142.4.219.23<br>
