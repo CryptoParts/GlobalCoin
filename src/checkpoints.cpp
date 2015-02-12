@@ -1,14 +1,17 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2012 Litecoin Developers
+// Copyright (c) 2013 GlobalCoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <boost/assign/list_of.hpp> // for 'map_list_of()'
+
 #include <boost/foreach.hpp>
 
 #include "checkpoints.h"
 
 #include "main.h"
+
 #include "uint256.h"
 
 namespace Checkpoints
