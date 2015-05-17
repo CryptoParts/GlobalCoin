@@ -999,6 +999,7 @@ void ThreadSocketHandler2(void* parg)
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
     {"seedhost", "ip 54.252.196.5"},
+    {"seedhost", "ip 52.24.129.149"}
 };
 
 void ThreadDNSAddressSeed(void* parg)
