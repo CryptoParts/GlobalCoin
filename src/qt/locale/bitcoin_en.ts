@@ -13,7 +13,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Copyright © 2009-2012 Bitcoin Developers
+        <source>Copyright © 2009-2015 Bitcoin Developers
 
 This is experimental software.
 
