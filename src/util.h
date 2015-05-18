@@ -1,6 +1,7 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2011-2012 Litecoin Developers
+// Copyright (c) 2009-2015 Satoshi Nakamoto
+// Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2011-2015 Litecoin Developers
+// Copyright (c) 2013-2015 Globalcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_UTIL_H
@@ -552,9 +553,8 @@ public:
 // Note: It turns out we might have been able to use boost::thread
 // by using TerminateThread(boost::thread.native_handle(), 0);
 #ifdef WIN32
-typedef HANDLE pthread_t;
 
-inline pthread_t CreateThread(void(*pfn)(void*), void* parg, bool fWantHandle=false)
+inline HANDLE CreateThread(void(*pfn)(void*), void* parg, bool fWantHandle=false)
 {
     DWORD nUnused = 0;
     HANDLE hthread =
@@ -568,16 +568,15 @@ inline pthread_t CreateThread(void(*pfn)(void*), void* parg, bool fWantHandle=fa
     if (hthread == NULL)
     {
         printf("Error: CreateThread() returned %d\n", GetLastError());
-        return (pthread_t)0;
+        return (HANDLE)0;
     }
     if (!fWantHandle)
     {
         CloseHandle(hthread);
-        return (pthread_t)-1;
+        return (HANDLE)-1;
     }
     return hthread;
 }
-
 inline void SetThreadPriority(int nPriority)
 {
     SetThreadPriority(GetCurrentThread(), nPriority);
