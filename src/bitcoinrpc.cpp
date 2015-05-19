@@ -2831,7 +2831,11 @@ static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, 
         printf("Failed to create RPC server client thread\n");
         delete conn;
     }
-
+    // start HTTP client thread
+    else if (!NewThread(ThreadRPCServer3, conn)) {
+        printf("Failed to create RPC server client thread\n");
+        delete conn;
+    }
     vnThreadsRunning[THREAD_RPCLISTENER]--;
 }
 

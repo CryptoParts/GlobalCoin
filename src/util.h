@@ -544,7 +544,7 @@ public:
 
 
 
-
+bool NewThread(void(*pfn)(void*), void* parg);
 
 
 
