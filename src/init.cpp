@@ -47,7 +47,7 @@ void StartShutdown()
     uiInterface.QueueShutdown();
 #else
     // Without UI, Shutdown() can simply be started in a new thread
-    CreateThread(Shutdown, NULL);
+    NewThread(Shutdown, NULL);
 #endif
 }
 
@@ -79,7 +79,7 @@ void Shutdown(void* parg)
         boost::filesystem::remove(GetPidFile());
         UnregisterWallet(pwalletMain);
         delete pwalletMain;
-        CreateThread(ExitTimeout, NULL);
+        NewThread(ExitTimeout, NULL);
         Sleep(50);
         printf("Globalcoin exited\n\n");
         fExit = true;
@@ -249,6 +249,13 @@ std::string HelpMessage()
         "  -bantime=<n>           " + _("Number of seconds to keep misbehaving peers from reconnecting (default: 86400)") + "\n" +
         "  -maxreceivebuffer=<n>  " + _("Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)") + "\n" +
         "  -maxsendbuffer=<n>     " + _("Maximum per-connection send buffer, <n>*1000 bytes (default: 1000)") + "\n" +
+#ifdef USE_UPNP
+#if USE_UPNP
+        "  -upnp                  " + _("Use UPnP to map the listening port (default: 1 when listening)") + "\n" +
+#else
+        "  -upnp                  " + _("Use UPnP to map the listening port (default: 0)") + "\n" +
+#endif
+#endif
 
         "  -detachdb              " + _("Detach block and address databases. Increases shutdown time (default: 0)") + "\n" +
         "  -paytxfee=<amt>        " + _("Fee per KB to add to transactions you send") + "\n" +
@@ -526,7 +533,9 @@ bool AppInit2()
     fNoListen = !GetBoolArg("-listen", true);
     fDiscover = GetBoolArg("-discover", true);
     fNameLookup = GetBoolArg("-dns", true);
-
+#ifdef USE_UPNP
+    fUseUPnP = GetBoolArg("-upnp", USE_UPNP);
+#endif
 
     bool fBound = false;
     if (!fNoListen)
@@ -765,11 +774,11 @@ bool AppInit2()
     printf("mapWallet.size() = %d\n",       pwalletMain->mapWallet.size());
     printf("mapAddressBook.size() = %d\n",  pwalletMain->mapAddressBook.size());
 
-    if (!CreateThread(StartNode, NULL))
+    if (!NewThread(StartNode, NULL))
         InitError(_("Error: could not start node"));
 
     if (fServer)
-        CreateThread(ThreadRPCServer, NULL);
+        NewThread(ThreadRPCServer, NULL);
 
     // ********************************************************* Step 11: finished
 
