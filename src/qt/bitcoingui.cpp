@@ -217,7 +217,7 @@ void BitcoinGUI::createActions()
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
     tabGroup->addAction(addressBookAction);
 
-    blockAction = new QAction(QIcon(":/icons/blexp"), tr("&Block Explorer"), this);
+    blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
     blockAction->setStatusTip(tr("Explore the BlockChain"));
     blockAction->setToolTip(blockAction->statusTip());
     blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
@@ -251,7 +251,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(firstClassMessagingAction);
 #endif
 
-    blockAction = new QAction(QIcon(":/icons/blexp"), tr("&Block Explorer"), this);
+    blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
     blockAction->setStatusTip(tr("Explore the BlockChain"));
     blockAction->setToolTip(blockAction->statusTip());
     blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
