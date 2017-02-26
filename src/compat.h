@@ -25,7 +25,12 @@
 #include <net/if.h>
 #include <netinet/in.h>
 #include <ifaddrs.h>
+
+#ifndef _MSC_VER
+typedef u_int SOCKET;
 #endif
+#endif
+
 
 #ifdef WIN32
 #define MSG_NOSIGNAL        0
