@@ -19,8 +19,8 @@ using namespace boost::assign;
 using namespace json_spirit;
 
 // These are all in bitcoinrpc.cpp:
+extern Value ValueFromAmount(int64 amount);
 extern Object JSONRPCError(int code, const string& message);
-extern int64 AmountFromValue(const Value& value);
 extern Value ValueFromAmount(int64 amount);
 extern std::string HelpRequiringPassphrase();
 extern void EnsureWalletIsUnlocked();
@@ -80,7 +80,7 @@ TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry)
     {
         const CTxOut& txout = tx.vout[i];
         Object out;
-        out.push_back(Pair("value", ValueFromAmount(txout.nValue)));
+        out.push_back(Pair("value",((double)txout.nValue/(double)COIN)));
         out.push_back(Pair("n", (boost::int64_t)i));
         Object o;
         ScriptPubKeyToJSON(txout.scriptPubKey, o);
@@ -176,7 +176,7 @@ Value listunspent(const Array& params, bool fHelp)
         entry.push_back(Pair("txid", out.tx->GetHash().GetHex()));
         entry.push_back(Pair("vout", out.i));
         entry.push_back(Pair("scriptPubKey", HexStr(pk.begin(), pk.end())));
-        entry.push_back(Pair("amount",ValueFromAmount(nValue)));
+        entry.push_back(Pair("amount",((double)(nValue)/(double)COIN) ));
         entry.push_back(Pair("confirmations",out.nDepth));
         results.push_back(entry);
     }
