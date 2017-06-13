@@ -17,12 +17,10 @@
 #include <list>
 
 class CWallet;
-class CWalletTx;
 class CBlock;
 class CBlockIndex;
 class CKeyItem;
 class CReserveKey;
-class COutPoint;
 
 class CAddress;
 class CInv;
@@ -61,12 +59,7 @@ extern CScript COINBASE_FLAGS;
 
 
 
-extern CMedianFilter<int> cPeerBlockCounts;
-extern std::map<uint256, CBlock*> mapOrphanBlocks;
-extern std::multimap<uint256, CBlock*> mapOrphanBlocksByPrev;
-extern std::map<uint256, CDataStream*> mapOrphanTransactions;
-extern std::map<uint256, std::map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
-extern CScript COINBASE_FLAGS;
+
 extern CCriticalSection cs_main;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
 extern uint256 hashGenesisBlock;
@@ -122,14 +115,6 @@ int GetNumBlocksOfPeers();
 bool IsInitialBlockDownload();
 std::string GetWarnings(std::string strFor);
 bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock);
-
-void Inventory(const uint256& hash);
-uint256 GetOrphanRoot(const CBlock* pblock);
-bool GetTransaction(const uint256& hashTx, CWalletTx& wtx);
-unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans);
-bool AddOrphanTx(const CDataStream& vMsg);
-void EraseOrphanTx(uint256 hash);
-void ResendWalletTransactions();
 
 
 
@@ -387,7 +372,7 @@ public:
     {
         if (scriptPubKey.size() < 6)
             return "CTxOut(error)";
-        return strprintf("CTxOut(nValue=%" PRI64d ".%08" PRI64d ", scriptPubKey=%s)", nValue / COIN, nValue % COIN, scriptPubKey.ToString().substr(0,30).c_str());
+        return strprintf("CTxOut(nValue=%"PRI64d".%08"PRI64d", scriptPubKey=%s)", nValue / COIN, nValue % COIN, scriptPubKey.ToString().substr(0,30).c_str());
     }
 
     void print() const
@@ -1496,8 +1481,8 @@ public:
         return strprintf(
                 "CAlert(\n"
                 "    nVersion     = %d\n"
-                "    nRelayUntil  = %" PRI64d "\n"
-                "    nExpiration  = %" PRI64d "\n"
+                "    nRelayUntil  = %"PRI64d"\n"
+                "    nExpiration  = %"PRI64d"\n"
                 "    nID          = %d\n"
                 "    nCancel      = %d\n"
                 "    setCancel    = %s\n"
@@ -1627,10 +1612,6 @@ public:
      */
     static CAlert getAlertByHash(const uint256 &hash);
 };
-
-extern std::map<uint256, CAlert> mapAlerts;
-extern CCriticalSection cs_mapAlerts;
-
 
 class CTxMemPool
 {

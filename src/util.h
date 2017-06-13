@@ -14,7 +14,7 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #else
-
+typedef int pid_t; /* define for windows compatiblity */
 #endif
 #include <map>
 #include <vector>
@@ -37,6 +37,7 @@ typedef unsigned long long  uint64;
 static const int64 COIN = 100000000;
 static const int64 CENT = 1000000;
 
+#define loop                for (;;)
 #define BEGIN(a)            ((char*)&(a))
 #define END(a)              ((char*)&((&(a))[1]))
 #define UBEGIN(a)           ((unsigned char*)&(a))
@@ -46,22 +47,13 @@ static const int64 CENT = 1000000;
 
 #ifndef PRI64d
 #if defined(_MSC_VER) || defined(__MSVCRT__)
-#define PRIszx    "Ix"
-#define PRIszu    "Iu"
-#define PRIszd    "Id"
-#define PRIpdx    "Ix"
-#define PRIpdu    "Iu"
-#define PRIpdd    "Id"
 #define PRI64d  "I64d"
 #define PRI64u  "I64u"
 #define PRI64x  "I64x"
 #else
-#define PRIszd    "zd"
-#define PRIszx    "zx"
 #define PRI64d  "lld"
 #define PRI64u  "llu"
 #define PRI64x  "llx"
-#define PRIszu  "zu"
 #endif
 #endif
 
@@ -198,7 +190,7 @@ void runCommand(std::string strCommand);
 
 inline std::string i64tostr(int64 n)
 {
-    return strprintf("%" PRI64d "", n);
+    return strprintf("%"PRI64d, n);
 }
 
 inline std::string itostr(int n)
@@ -549,20 +541,6 @@ public:
     }
 };
 
-/**
- * Timing-attack-resistant comparison.
- * Takes time proportional to length
- * of first argument.
- */
-template <typename T>
-bool TimingResistantEqual(const T& a, const T& b)
-{
-    if (b.size() == 0) return a.size() == 0;
-    size_t accumulator = a.size() ^ b.size();
-    for (size_t i = 0; i < a.size(); i++)
-        accumulator |= a[i] ^ b[i%b.size()];
-    return accumulator == 0;
-}
 
 
 
