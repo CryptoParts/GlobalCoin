@@ -20,17 +20,15 @@
 #include "addresstablemodel.h"
 #include "transactionview.h"
 #include "overviewpage.h"
+#include "miningpage.h"
 #include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
 #include "notificator.h"
 #include "guiutil.h"
 #include "rpcconsole.h"
-#include "wallet.h"
 #include "blockbrowser.h"
-#include "miningpage.h"
-
-#ifdef Q_OS_MAC
+#ifdef Q_WS_MAC
 #include "macdockiconhandler.h"
 #endif
 
@@ -48,7 +46,6 @@
 #include <QPushButton>
 #include <QLocale>
 #include <QMessageBox>
-#include <QMimeData>
 #include <QProgressBar>
 #include <QStackedWidget>
 #include <QDateTime>
@@ -58,9 +55,11 @@
 #include <QTimer>
 #include <QDragEnterEvent>
 #include <QUrl>
-#include <QStyle>
-#include <QSignalMapper>
+#include <QFile>
 #include <QTextStream>
+#include <QSignalMapper>
+#include <QSettings>
+#include <iostream>
 
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
