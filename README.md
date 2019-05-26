@@ -1,6 +1,6 @@
 <h1>Globalcoin (GLC)</h1>
 
-<a href="https://bitcointalk.org/index.php?topic=243911.0" target="_blank">Bitcointalk.org thread</a> <-- account hacked do not trust anyposts from this account anymore! and DO NOT DOWNLOAD FROM THERE!
+<a href="https://bitcointalk.org/index.php?topic=243911.0" target="_blank">Bitcointalk.org thread</a> <-- account hacked do not trust any posts from this account anymore! and DO NOT DOWNLOAD FROM THERE!
 
 <a href="http://www.GLC.IO" target="_blank">Official website</a>
 
