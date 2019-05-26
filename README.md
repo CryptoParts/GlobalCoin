@@ -4,7 +4,9 @@
 
 <a href="http://www.GLC.IO" target="_blank">Official website</a>
 
-Development Donations: 78M7qK1j4ryhz9L5Vj47mehgk4gF8bDRA1
+
+OFFICIAL SOURCE CODE
+
 
 0% Pre-mine - Fair Launch: Wednesday 26 Jun 2013 16:12:27 GMT
 
