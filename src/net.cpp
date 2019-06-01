@@ -1146,8 +1146,10 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    {"seedhost", "ip 142.4.199.201"},
-    {"seedhost", "ip 142.4.199.201"}
+    {"seedhost", "ip 142.4.199.201"},    
+    {"seedhost", "ip 54.252.196.5"},
+    {"seedhost", "ip 52.24.129.149"}
+
 };
 
 void ThreadDNSAddressSeed(void* parg)
