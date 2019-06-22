@@ -2,7 +2,7 @@
 
 <a href="https://bitcointalk.org/index.php?topic=243911.0" target="_blank">Bitcointalk.org thread</a> <-- account hacked do not trust any posts from this account anymore! and DO NOT DOWNLOAD FROM THERE!
 
-<a href="http://www.GLC.IO" target="_blank">Official website</a>
+<a href="" target="_blank">Official website coming soon</a>
 
 
 OFFICIAL SOURCE CODE
@@ -10,7 +10,7 @@ OFFICIAL SOURCE CODE
 
 0% Pre-mine - Fair Launch: Wednesday 26 Jun 2013 16:12:27 GMT
 
-<a href="http://bopbop.me" target="_blank">Live network stats</a>
+<a href="" target="_blank">Live network stats-being rebuilt</a>
 
 <h2>Specifications:</h2>
 
